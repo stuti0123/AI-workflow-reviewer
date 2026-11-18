@@ -13,4 +13,4 @@
 
 **Not verified:** behaviour with a real model (never run), and generalization beyond the synthetic, author-written fixtures.
 
-**To complete before submitting (candidate):** replace this line with a short, truthful statement of what *you* personally did, for example which files you read, what you ran, and what you can explain. I could not determine this and have not claimed it for you.
+**Candidate verification:** I reviewed the assessment requirements, repository structure, README, engineering note, AI assistance disclosure and evaluation reports. I installed the dependencies and ran the automated test suite on this repository, with all 25 tests passing. I also inspected the freeze verification and its platform-specific path hashing issue. I have not independently verified real-model performance; all reported evaluation results use synthetic fixtures and a fake model client.

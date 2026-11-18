@@ -1,5 +1,5 @@
 {
- "implementation": "/home/claude/shodh-review/shodh_review",
+ "implementation": "C:\\Users\\HP\\Downloads\\shodh-review-submit\\shodh-review\\shodh_review",
  "split": "all",
  "ablation": {
   "validate_model_claims": false
@@ -96,8 +96,8 @@
  ],
  "resource_use": {
   "fake_client_or_offline": {
-   "total_runtime_s": 0.4924,
-   "mean_case_runtime_s": 0.01747,
+   "total_runtime_s": 0.8229,
+   "mean_case_runtime_s": 0.0288,
    "model_calls": 30,
    "model_retries": 2
   },
@@ -125,9 +125,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.02186,
+   "runtime_s": 0.0226,
    "usage": {
-    "runtime_s": 0.0214,
+    "runtime_s": 0.022,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -162,9 +162,9 @@
    "unsupported_findings": [],
    "n_findings": 2,
    "n_blockers": 1,
-   "runtime_s": 0.02101,
+   "runtime_s": 0.03417,
    "usage": {
-    "runtime_s": 0.0207,
+    "runtime_s": 0.0338,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -199,9 +199,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.01279,
+   "runtime_s": 0.02144,
    "usage": {
-    "runtime_s": 0.0125,
+    "runtime_s": 0.021,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -236,9 +236,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.03483,
+   "runtime_s": 0.06922,
    "usage": {
-    "runtime_s": 0.0345,
+    "runtime_s": 0.0687,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -273,9 +273,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.01262,
+   "runtime_s": 0.02112,
    "usage": {
-    "runtime_s": 0.0124,
+    "runtime_s": 0.0208,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -310,9 +310,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.01258,
+   "runtime_s": 0.02174,
    "usage": {
-    "runtime_s": 0.0123,
+    "runtime_s": 0.0213,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -347,9 +347,9 @@
    "unsupported_findings": [],
    "n_findings": 2,
    "n_blockers": 1,
-   "runtime_s": 0.01417,
+   "runtime_s": 0.02495,
    "usage": {
-    "runtime_s": 0.0139,
+    "runtime_s": 0.0244,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -384,9 +384,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.01778,
+   "runtime_s": 0.03269,
    "usage": {
-    "runtime_s": 0.0175,
+    "runtime_s": 0.0318,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -421,9 +421,9 @@
    "unsupported_findings": [],
    "n_findings": 3,
    "n_blockers": 1,
-   "runtime_s": 0.01331,
+   "runtime_s": 0.02307,
    "usage": {
-    "runtime_s": 0.0131,
+    "runtime_s": 0.0227,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -458,9 +458,9 @@
    "unsupported_findings": [],
    "n_findings": 3,
    "n_blockers": 1,
-   "runtime_s": 0.01257,
+   "runtime_s": 0.02044,
    "usage": {
-    "runtime_s": 0.0123,
+    "runtime_s": 0.0201,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -515,9 +515,9 @@
    "unsupported_findings": [],
    "n_findings": 3,
    "n_blockers": 3,
-   "runtime_s": 0.02407,
+   "runtime_s": 0.03954,
    "usage": {
-    "runtime_s": 0.0238,
+    "runtime_s": 0.0391,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -552,9 +552,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.01302,
+   "runtime_s": 0.0212,
    "usage": {
-    "runtime_s": 0.0128,
+    "runtime_s": 0.0208,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -589,9 +589,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.0124,
+   "runtime_s": 0.02723,
    "usage": {
-    "runtime_s": 0.0122,
+    "runtime_s": 0.0269,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -626,9 +626,9 @@
    "unsupported_findings": [],
    "n_findings": 2,
    "n_blockers": 1,
-   "runtime_s": 0.01294,
+   "runtime_s": 0.02055,
    "usage": {
-    "runtime_s": 0.0127,
+    "runtime_s": 0.0202,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -653,9 +653,9 @@
    "unsupported_findings": [],
    "n_findings": 2,
    "n_blockers": 0,
-   "runtime_s": 0.0301,
+   "runtime_s": 0.05024,
    "usage": {
-    "runtime_s": 0.0298,
+    "runtime_s": 0.0495,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -680,9 +680,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.01266,
+   "runtime_s": 0.02099,
    "usage": {
-    "runtime_s": 0.0124,
+    "runtime_s": 0.0205,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -706,9 +706,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.01259,
+   "runtime_s": 0.02027,
    "usage": {
-    "runtime_s": 0.0123,
+    "runtime_s": 0.02,
     "model_calls": 2,
     "model_retries": 1,
     "model_tokens": {
@@ -730,9 +730,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.0017,
+   "runtime_s": 0.0024,
    "usage": {
-    "runtime_s": 0.0015,
+    "runtime_s": 0.0022,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -756,9 +756,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.00944,
+   "runtime_s": 0.01491,
    "usage": {
-    "runtime_s": 0.0092,
+    "runtime_s": 0.0145,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -782,9 +782,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.01233,
+   "runtime_s": 0.02106,
    "usage": {
-    "runtime_s": 0.0121,
+    "runtime_s": 0.0207,
     "model_calls": 2,
     "model_retries": 1,
     "model_tokens": {
@@ -806,9 +806,9 @@
    "unsupported_findings": [],
    "n_findings": 3,
    "n_blockers": 0,
-   "runtime_s": 0.03636,
+   "runtime_s": 0.04285,
    "usage": {
-    "runtime_s": 0.036,
+    "runtime_s": 0.0425,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -833,9 +833,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.01338,
+   "runtime_s": 0.02079,
    "usage": {
-    "runtime_s": 0.0131,
+    "runtime_s": 0.0204,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -857,9 +857,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.01449,
+   "runtime_s": 0.02925,
    "usage": {
-    "runtime_s": 0.0142,
+    "runtime_s": 0.0289,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -881,9 +881,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.05866,
+   "runtime_s": 0.09982,
    "usage": {
-    "runtime_s": 0.0582,
+    "runtime_s": 0.0992,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -905,9 +905,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.01256,
+   "runtime_s": 0.02053,
    "usage": {
-    "runtime_s": 0.0123,
+    "runtime_s": 0.0202,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -929,9 +929,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.01288,
+   "runtime_s": 0.02216,
    "usage": {
-    "runtime_s": 0.0126,
+    "runtime_s": 0.0218,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -953,9 +953,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.01266,
+   "runtime_s": 0.02068,
    "usage": {
-    "runtime_s": 0.0123,
+    "runtime_s": 0.0203,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -977,9 +977,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.01352,
+   "runtime_s": 0.02051,
    "usage": {
-    "runtime_s": 0.0132,
+    "runtime_s": 0.0202,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {

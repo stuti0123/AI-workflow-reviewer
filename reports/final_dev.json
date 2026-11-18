@@ -1,5 +1,5 @@
 {
- "implementation": "/home/claude/shodh-review/shodh_review",
+ "implementation": "C:\\Users\\HP\\Downloads\\shodh-review-submit\\shodh-review\\shodh_review",
  "split": "dev",
  "ablation": null,
  "supports_model_integration": true,
@@ -75,8 +75,8 @@
  "paired_variants": [],
  "resource_use": {
   "fake_client_or_offline": {
-   "total_runtime_s": 0.4568,
-   "mean_case_runtime_s": 0.02157,
+   "total_runtime_s": 0.6618,
+   "mean_case_runtime_s": 0.03089,
    "model_calls": 21,
    "model_retries": 0
   },
@@ -104,9 +104,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.02605,
+   "runtime_s": 0.02254,
    "usage": {
-    "runtime_s": 0.0254,
+    "runtime_s": 0.022,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -141,9 +141,9 @@
    "unsupported_findings": [],
    "n_findings": 2,
    "n_blockers": 1,
-   "runtime_s": 0.03248,
+   "runtime_s": 0.03308,
    "usage": {
-    "runtime_s": 0.032,
+    "runtime_s": 0.0327,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -178,9 +178,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.01999,
+   "runtime_s": 0.02269,
    "usage": {
-    "runtime_s": 0.0196,
+    "runtime_s": 0.0223,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -215,9 +215,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.03726,
+   "runtime_s": 0.06598,
    "usage": {
-    "runtime_s": 0.0369,
+    "runtime_s": 0.0655,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -252,9 +252,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.01265,
+   "runtime_s": 0.02065,
    "usage": {
-    "runtime_s": 0.0124,
+    "runtime_s": 0.0203,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -289,9 +289,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.01269,
+   "runtime_s": 0.02102,
    "usage": {
-    "runtime_s": 0.0124,
+    "runtime_s": 0.0207,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -326,9 +326,9 @@
    "unsupported_findings": [],
    "n_findings": 2,
    "n_blockers": 1,
-   "runtime_s": 0.01416,
+   "runtime_s": 0.02317,
    "usage": {
-    "runtime_s": 0.0139,
+    "runtime_s": 0.0229,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -363,9 +363,9 @@
    "unsupported_findings": [],
    "n_findings": 3,
    "n_blockers": 1,
-   "runtime_s": 0.01325,
+   "runtime_s": 0.02216,
    "usage": {
-    "runtime_s": 0.013,
+    "runtime_s": 0.0216,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -420,9 +420,9 @@
    "unsupported_findings": [],
    "n_findings": 3,
    "n_blockers": 3,
-   "runtime_s": 0.02408,
+   "runtime_s": 0.04331,
    "usage": {
-    "runtime_s": 0.0238,
+    "runtime_s": 0.0428,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -457,9 +457,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.01271,
+   "runtime_s": 0.02098,
    "usage": {
-    "runtime_s": 0.0125,
+    "runtime_s": 0.0206,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -494,9 +494,9 @@
    "unsupported_findings": [],
    "n_findings": 2,
    "n_blockers": 1,
-   "runtime_s": 0.01273,
+   "runtime_s": 0.02091,
    "usage": {
-    "runtime_s": 0.0125,
+    "runtime_s": 0.0205,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -521,9 +521,9 @@
    "unsupported_findings": [],
    "n_findings": 2,
    "n_blockers": 0,
-   "runtime_s": 0.02973,
+   "runtime_s": 0.05488,
    "usage": {
-    "runtime_s": 0.0295,
+    "runtime_s": 0.0545,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -548,9 +548,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.01278,
+   "runtime_s": 0.02071,
    "usage": {
-    "runtime_s": 0.0125,
+    "runtime_s": 0.0203,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -574,9 +574,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.00164,
+   "runtime_s": 0.00242,
    "usage": {
-    "runtime_s": 0.0015,
+    "runtime_s": 0.0022,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -600,9 +600,9 @@
    "unsupported_findings": [],
    "n_findings": 3,
    "n_blockers": 0,
-   "runtime_s": 0.02591,
+   "runtime_s": 0.04267,
    "usage": {
-    "runtime_s": 0.0256,
+    "runtime_s": 0.0423,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -627,9 +627,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.01249,
+   "runtime_s": 0.02066,
    "usage": {
-    "runtime_s": 0.0123,
+    "runtime_s": 0.0203,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -651,9 +651,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.01456,
+   "runtime_s": 0.0229,
    "usage": {
-    "runtime_s": 0.0143,
+    "runtime_s": 0.0226,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -675,9 +675,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.077,
+   "runtime_s": 0.09965,
    "usage": {
-    "runtime_s": 0.0762,
+    "runtime_s": 0.0991,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -699,9 +699,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.03266,
+   "runtime_s": 0.02069,
    "usage": {
-    "runtime_s": 0.0322,
+    "runtime_s": 0.0203,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -723,9 +723,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.01505,
+   "runtime_s": 0.02076,
    "usage": {
-    "runtime_s": 0.0147,
+    "runtime_s": 0.0203,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -760,9 +760,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.01311,
+   "runtime_s": 0.02677,
    "usage": {
-    "runtime_s": 0.0128,
+    "runtime_s": 0.0264,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {

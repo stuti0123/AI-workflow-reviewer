@@ -1,5 +1,5 @@
 {
- "implementation": "/home/claude/shodh-review/checkpoints/checkpoint1/shodh_review",
+ "implementation": "C:\\Users\\HP\\Downloads\\shodh-review-submit\\shodh-review\\checkpoints\\checkpoint1\\shodh_review",
  "split": "all",
  "ablation": null,
  "supports_model_integration": false,
@@ -96,8 +96,8 @@
  ],
  "resource_use": {
   "fake_client_or_offline": {
-   "total_runtime_s": 0.5414,
-   "mean_case_runtime_s": 0.01922,
+   "total_runtime_s": 0.8358,
+   "mean_case_runtime_s": 0.02927,
    "model_calls": 0,
    "model_retries": 0
   },
@@ -125,9 +125,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.0137,
+   "runtime_s": 0.02245,
    "usage": {
-    "runtime_s": 0.0136,
+    "runtime_s": 0.0223,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -167,9 +167,9 @@
    ],
    "n_findings": 2,
    "n_blockers": 1,
-   "runtime_s": 0.02259,
+   "runtime_s": 0.03339,
    "usage": {
-    "runtime_s": 0.0225,
+    "runtime_s": 0.0332,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -200,9 +200,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.01249,
+   "runtime_s": 0.02144,
    "usage": {
-    "runtime_s": 0.0124,
+    "runtime_s": 0.0213,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -233,9 +233,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.03422,
+   "runtime_s": 0.06596,
    "usage": {
-    "runtime_s": 0.0341,
+    "runtime_s": 0.0658,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -266,9 +266,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.01243,
+   "runtime_s": 0.02053,
    "usage": {
-    "runtime_s": 0.0123,
+    "runtime_s": 0.0204,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -299,9 +299,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.01232,
+   "runtime_s": 0.02159,
    "usage": {
-    "runtime_s": 0.0122,
+    "runtime_s": 0.0214,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -332,9 +332,9 @@
    "unsupported_findings": [],
    "n_findings": 2,
    "n_blockers": 1,
-   "runtime_s": 0.0133,
+   "runtime_s": 0.02338,
    "usage": {
-    "runtime_s": 0.0132,
+    "runtime_s": 0.0232,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -365,9 +365,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.02695,
+   "runtime_s": 0.03467,
    "usage": {
-    "runtime_s": 0.0267,
+    "runtime_s": 0.0345,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -398,9 +398,9 @@
    "unsupported_findings": [],
    "n_findings": 3,
    "n_blockers": 1,
-   "runtime_s": 0.02075,
+   "runtime_s": 0.02252,
    "usage": {
-    "runtime_s": 0.0206,
+    "runtime_s": 0.0223,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -431,9 +431,9 @@
    "unsupported_findings": [],
    "n_findings": 3,
    "n_blockers": 1,
-   "runtime_s": 0.01938,
+   "runtime_s": 0.02087,
    "usage": {
-    "runtime_s": 0.0192,
+    "runtime_s": 0.0206,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -484,9 +484,9 @@
    "unsupported_findings": [],
    "n_findings": 3,
    "n_blockers": 3,
-   "runtime_s": 0.03873,
+   "runtime_s": 0.0461,
    "usage": {
-    "runtime_s": 0.0385,
+    "runtime_s": 0.0459,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -517,9 +517,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.02033,
+   "runtime_s": 0.02105,
    "usage": {
-    "runtime_s": 0.0201,
+    "runtime_s": 0.0209,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -550,9 +550,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.01365,
+   "runtime_s": 0.02068,
    "usage": {
-    "runtime_s": 0.0135,
+    "runtime_s": 0.0205,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -583,9 +583,9 @@
    "unsupported_findings": [],
    "n_findings": 2,
    "n_blockers": 0,
-   "runtime_s": 0.01271,
+   "runtime_s": 0.02717,
    "usage": {
-    "runtime_s": 0.0126,
+    "runtime_s": 0.027,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -606,9 +606,9 @@
    "unsupported_findings": [],
    "n_findings": 2,
    "n_blockers": 0,
-   "runtime_s": 0.02954,
+   "runtime_s": 0.05047,
    "usage": {
-    "runtime_s": 0.0294,
+    "runtime_s": 0.0502,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -629,9 +629,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.01232,
+   "runtime_s": 0.0207,
    "usage": {
-    "runtime_s": 0.0122,
+    "runtime_s": 0.0205,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -651,9 +651,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.0122,
+   "runtime_s": 0.02004,
    "usage": {
-    "runtime_s": 0.0121,
+    "runtime_s": 0.0199,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -671,9 +671,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.00153,
+   "runtime_s": 0.00225,
    "usage": {
-    "runtime_s": 0.0015,
+    "runtime_s": 0.0021,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -693,9 +693,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.00928,
+   "runtime_s": 0.01482,
    "usage": {
-    "runtime_s": 0.0092,
+    "runtime_s": 0.0147,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -715,9 +715,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.01265,
+   "runtime_s": 0.02568,
    "usage": {
-    "runtime_s": 0.0125,
+    "runtime_s": 0.0255,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -735,9 +735,9 @@
    "unsupported_findings": [],
    "n_findings": 3,
    "n_blockers": 0,
-   "runtime_s": 0.02912,
+   "runtime_s": 0.04246,
    "usage": {
-    "runtime_s": 0.029,
+    "runtime_s": 0.0422,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -758,9 +758,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.0218,
+   "runtime_s": 0.02018,
    "usage": {
-    "runtime_s": 0.0217,
+    "runtime_s": 0.02,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -778,9 +778,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.01672,
+   "runtime_s": 0.03182,
    "usage": {
-    "runtime_s": 0.0166,
+    "runtime_s": 0.0316,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -798,9 +798,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.06172,
+   "runtime_s": 0.10667,
    "usage": {
-    "runtime_s": 0.0614,
+    "runtime_s": 0.1061,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -818,9 +818,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.01534,
+   "runtime_s": 0.02069,
    "usage": {
-    "runtime_s": 0.0152,
+    "runtime_s": 0.0205,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -838,9 +838,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.01439,
+   "runtime_s": 0.02166,
    "usage": {
-    "runtime_s": 0.0142,
+    "runtime_s": 0.0215,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -858,9 +858,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.01287,
+   "runtime_s": 0.02015,
    "usage": {
-    "runtime_s": 0.0127,
+    "runtime_s": 0.02,
     "model_calls": 0,
     "model_retries": 0
    },
@@ -878,9 +878,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.01523,
+   "runtime_s": 0.02015,
    "usage": {
-    "runtime_s": 0.0151,
+    "runtime_s": 0.02,
     "model_calls": 0,
     "model_retries": 0
    },

@@ -1,5 +1,5 @@
 {
- "implementation": "/home/claude/shodh-review/shodh_review",
+ "implementation": "C:\\Users\\HP\\Downloads\\shodh-review-submit\\shodh-review\\shodh_review",
  "split": "heldout",
  "ablation": null,
  "supports_model_integration": true,
@@ -75,8 +75,8 @@
  "paired_variants": [],
  "resource_use": {
   "fake_client_or_offline": {
-   "total_runtime_s": 0.1007,
-   "mean_case_runtime_s": 0.01417,
+   "total_runtime_s": 0.1662,
+   "mean_case_runtime_s": 0.0227,
    "model_calls": 9,
    "model_retries": 2
   },
@@ -104,9 +104,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.02255,
+   "runtime_s": 0.03186,
    "usage": {
-    "runtime_s": 0.0221,
+    "runtime_s": 0.0313,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -141,9 +141,9 @@
    "unsupported_findings": [],
    "n_findings": 3,
    "n_blockers": 1,
-   "runtime_s": 0.01255,
+   "runtime_s": 0.02131,
    "usage": {
-    "runtime_s": 0.0122,
+    "runtime_s": 0.0209,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -178,9 +178,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 1,
-   "runtime_s": 0.01321,
+   "runtime_s": 0.02114,
    "usage": {
-    "runtime_s": 0.0129,
+    "runtime_s": 0.0208,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -204,9 +204,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.01241,
+   "runtime_s": 0.02069,
    "usage": {
-    "runtime_s": 0.0121,
+    "runtime_s": 0.0204,
     "model_calls": 2,
     "model_retries": 1,
     "model_tokens": {
@@ -228,9 +228,9 @@
    "unsupported_findings": [],
    "n_findings": 1,
    "n_blockers": 0,
-   "runtime_s": 0.00964,
+   "runtime_s": 0.01533,
    "usage": {
-    "runtime_s": 0.0094,
+    "runtime_s": 0.015,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {
@@ -254,9 +254,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.01448,
+   "runtime_s": 0.02784,
    "usage": {
-    "runtime_s": 0.0141,
+    "runtime_s": 0.0275,
     "model_calls": 2,
     "model_retries": 1,
     "model_tokens": {
@@ -278,9 +278,9 @@
    "unsupported_findings": [],
    "n_findings": 0,
    "n_blockers": 0,
-   "runtime_s": 0.01436,
+   "runtime_s": 0.02076,
    "usage": {
-    "runtime_s": 0.014,
+    "runtime_s": 0.0204,
     "model_calls": 1,
     "model_retries": 0,
     "model_tokens": {

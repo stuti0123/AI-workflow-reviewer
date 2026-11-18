@@ -1,41 +1,41 @@
 {
- "heldout": {
-  "D08_interacting_plausible_rules": {
-   "label_sha256": "7718ad3c02d0a9d9b206119a3a7c3f46a48c079443161f4b5e96dc262c072db7",
-   "case_sha256": "11f325a6d4f0c3c272eb613176faefa0cbfb70e9f17f050f78cf9c00a9c77c7a"
+  "heldout": {
+    "D08_interacting_plausible_rules": {
+      "label_sha256": "7718ad3c02d0a9d9b206119a3a7c3f46a48c079443161f4b5e96dc262c072db7",
+      "case_sha256": "11f325a6d4f0c3c272eb613176faefa0cbfb70e9f17f050f78cf9c00a9c77c7a"
+    },
+    "D10_injection_plus_defect": {
+      "label_sha256": "a2261811f40dde88527210bc4b509993ee6585090cab4663db4ef5692bd38179",
+      "case_sha256": "6969189434bb56c72997925120856be8203ca51713468b509bb2e764dc9ad69f"
+    },
+    "D12_threshold_changed_renamed_variant": {
+      "label_sha256": "ab99fbccb0a7acd3f4e4a89d4e7e63d1c44c3316e3ff1ef5969575459a543de4",
+      "case_sha256": "bb743e290274b6dc586cd9a61d3fec0f431658befe7ec338c7ad25dcb6f5f7b7"
+    },
+    "I03_model_timeout": {
+      "label_sha256": "1264a888d8993cd378985fb7a4809e77187c172177a4fa518bedf80948c7517a",
+      "case_sha256": "a102d3ab989c8051aba0a3750744dfe4cfd01683dde0db59c6a2f7edd3f3794e"
+    },
+    "I05_ambiguous_unit": {
+      "label_sha256": "fa699cfcb2b5a991cde5915d6db20cf17c434393c62e08a4ffedd01ef394ebe8",
+      "case_sha256": "d85634f8829dfb5b6ee182d317e69830f5c396a3d584263a081fc12fc6df1faa"
+    },
+    "I06_model_truncated_json": {
+      "label_sha256": "6a0fdb49c617bac9d61bce5fb24072e0157e0b7e4e5f4a6bbf7b09f2cf6ec5f8",
+      "case_sha256": "41b0f60ac76137ce0fbe7e8369eb1665020ed3c8cbe91545a5a9e23c41fc8739"
+    },
+    "V04_renamed_reordered_paraphrased": {
+      "label_sha256": "ae7181dff90e30ae30edc2189660d043919288c57e2af2569771fbdda17c4369",
+      "case_sha256": "55f7ec5ae14dc59bca903d72f53cec099bfc93dce55086e7833e4946312ad25c"
+    }
   },
-  "D10_injection_plus_defect": {
-   "label_sha256": "a2261811f40dde88527210bc4b509993ee6585090cab4663db4ef5692bd38179",
-   "case_sha256": "6969189434bb56c72997925120856be8203ca51713468b509bb2e764dc9ad69f"
+  "generation_config": {
+    "seed": 20261118,
+    "generator_version": "1"
   },
-  "D12_threshold_changed_renamed_variant": {
-   "label_sha256": "ab99fbccb0a7acd3f4e4a89d4e7e63d1c44c3316e3ff1ef5969575459a543de4",
-   "case_sha256": "bb743e290274b6dc586cd9a61d3fec0f431658befe7ec338c7ad25dcb6f5f7b7"
-  },
-  "I03_model_timeout": {
-   "label_sha256": "1264a888d8993cd378985fb7a4809e77187c172177a4fa518bedf80948c7517a",
-   "case_sha256": "a102d3ab989c8051aba0a3750744dfe4cfd01683dde0db59c6a2f7edd3f3794e"
-  },
-  "I05_ambiguous_unit": {
-   "label_sha256": "fa699cfcb2b5a991cde5915d6db20cf17c434393c62e08a4ffedd01ef394ebe8",
-   "case_sha256": "d85634f8829dfb5b6ee182d317e69830f5c396a3d584263a081fc12fc6df1faa"
-  },
-  "I06_model_truncated_json": {
-   "label_sha256": "6a0fdb49c617bac9d61bce5fb24072e0157e0b7e4e5f4a6bbf7b09f2cf6ec5f8",
-   "case_sha256": "41b0f60ac76137ce0fbe7e8369eb1665020ed3c8cbe91545a5a9e23c41fc8739"
-  },
-  "V04_renamed_reordered_paraphrased": {
-   "label_sha256": "ae7181dff90e30ae30edc2189660d043919288c57e2af2569771fbdda17c4369",
-   "case_sha256": "55f7ec5ae14dc59bca903d72f53cec099bfc93dce55086e7833e4946312ad25c"
-  }
- },
- "generation_config": {
-  "seed": 20261118,
-  "generator_version": "1"
- },
- "final_implementation_sha256": "15c48c8e1b58990abf6f2063884a1eee3b4034291e23b7a6a251041f56d2aff4",
- "checkpoint_implementation_sha256": "3fe749fa8ad55cb71e6cfbe7da1118f3a9eaebe0d6ea64594928002f69024493",
- "oracle_sha256": "0cc447cc31b557ca923112b0b97aad2bbbd75fc67f93382f68e43be4fbe1486e",
- "frozen_at_commit": "a07a3cff60b06ff9d9f6638eb49fd12c005761bb",
- "note": "Held-out cases were generated with their labels before any reviewer run on them. They were never executed through the reviewer, inspected for output, or used for tuning before this freeze."
+  "final_implementation_sha256": "15c48c8e1b58990abf6f2063884a1eee3b4034291e23b7a6a251041f56d2aff4",
+  "checkpoint_implementation_sha256": "3fe749fa8ad55cb71e6cfbe7da1118f3a9eaebe0d6ea64594928002f69024493",
+  "oracle_sha256": "0cc447cc31b557ca923112b0b97aad2bbbd75fc67f93382f68e43be4fbe1486e",
+  "frozen_at_commit": "a07a3cff60b06ff9d9f6638eb49fd12c005761bb",
+  "note": "The held-out case, label, generator and implementation hashes are recorded here. The freeze commit was created after the final implementation commit, so Git history cannot independently establish that held-out cases were never inspected or used for tuning. See docs/ENGINEERING_NOTE.md for this limitation."
 }

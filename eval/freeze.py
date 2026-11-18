@@ -11,7 +11,7 @@ def tree_hash(paths):
     for base in paths:
         for f in sorted(Path(base).rglob("*")):
             if f.is_file() and "__pycache__" not in f.parts:
-                h.update(str(f.relative_to(ROOT)).encode()); h.update(f.read_bytes())
+                h.update(f.relative_to(ROOT).as_posix().encode("utf-8")); h.update(f.read_bytes())
     return h.hexdigest()
 
 
@@ -20,8 +20,8 @@ def snapshot():
     for lab in sorted((ROOT / "fixtures" / "labels").glob("*.json")):
         l = json.loads(lab.read_text())
         if l["split"] == "heldout":
-            held[lab.stem] = {"label_sha256": hashlib.sha256(lab.read_bytes()).hexdigest(),
-                              "case_sha256": hashlib.sha256((ROOT / "fixtures" / "cases" / lab.name).read_bytes()).hexdigest()}
+            held[lab.stem] = {"label_sha256": hashlib.sha256(lab.read_bytes().replace(b"\r\n", b"\n")).hexdigest(),
+                              "case_sha256": hashlib.sha256((ROOT / "fixtures" / "cases" / lab.name).read_bytes().replace(b"\r\n", b"\n")).hexdigest()}
     return {"heldout": held, "generation_config": json.loads((ROOT / "fixtures" / "config.json").read_text()),
             "final_implementation_sha256": tree_hash([ROOT / "shodh_review", ROOT / "schemas"]),
             "checkpoint_implementation_sha256": tree_hash([ROOT / "checkpoints" / "checkpoint1"]),

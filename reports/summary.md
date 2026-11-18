@@ -4,14 +4,14 @@ All numbers: synthetic fixtures, deterministic reviewer, **fake model client onl
 
 | run | status exact | false passes | false blocks | incomplete found | abstain valid+defective | defect+rule ok | counterexample ok | unsupported blockers | runtime |
 |---|---|---|---|---|---|---|---|---|---|
-| baseline [all] | 25/28 | 0/14 | 0/7 | 5/7 | 0+1 | 14/16 | 14/16 | 1/15 | 0.5414s |
-| baseline [dev] | 20/21 | 0/11 | 0/6 | 4/4 | 0+1 | 11/13 | 11/13 | 1/12 | 0.5437s |
-| baseline [heldout] | 5/7 | 0/3 | 0/1 | 1/3 | 0+0 | 3/3 | 3/3 | 0/3 | 0.1332s |
-| final [all] | 28/28 | 0/14 | 0/7 | 7/7 | 0+0 | 16/16 | 16/16 | 0/16 | 0.5468s |
-| final [dev] | 21/21 | 0/11 | 0/6 | 4/4 | 0+0 | 13/13 | 13/13 | 0/13 | 0.4568s |
-| final [heldout] | 7/7 | 0/3 | 0/1 | 3/3 | 0+0 | 3/3 | 3/3 | 0/3 | 0.1007s |
-| ablation_no_boundary_points [all] | 24/28 | 3/14 | 0/7 | 7/7 | 0+1 | 12/16 | 12/16 | 0/12 | 0.2814s |
-| ablation_no_model_claim_validation [all] | 28/28 | 0/14 | 0/7 | 7/7 | 0+0 | 16/16 | 16/16 | 0/16 | 0.4924s |
+| baseline [all] | 25/28 | 0/14 | 0/7 | 5/7 | 0+1 | 14/16 | 14/16 | 1/15 | 0.8358s |
+| baseline [dev] | 20/21 | 0/11 | 0/6 | 4/4 | 0+1 | 11/13 | 11/13 | 1/12 | 0.6482s |
+| baseline [heldout] | 5/7 | 0/3 | 0/1 | 1/3 | 0+0 | 3/3 | 3/3 | 0/3 | 0.1592s |
+| final [all] | 28/28 | 0/14 | 0/7 | 7/7 | 0+0 | 16/16 | 16/16 | 0/16 | 0.8086s |
+| final [dev] | 21/21 | 0/11 | 0/6 | 4/4 | 0+0 | 13/13 | 13/13 | 0/13 | 0.6618s |
+| final [heldout] | 7/7 | 0/3 | 0/1 | 3/3 | 0+0 | 3/3 | 3/3 | 0/3 | 0.1662s |
+| ablation_no_boundary_points [all] | 24/28 | 3/14 | 0/7 | 7/7 | 0+1 | 12/16 | 12/16 | 0/12 | 0.4691s |
+| ablation_no_model_claim_validation [all] | 28/28 | 0/14 | 0/7 | 7/7 | 0+0 | 16/16 | 16/16 | 0/16 | 0.8229s |
 
 ## Cases whose outcome differs: checkpoint-1 vs final
 - `D02_unapproved_change_used` (expected CHANGES_REQUIRED): checkpoint=CHANGES_REQUIRED, final=CHANGES_REQUIRED
