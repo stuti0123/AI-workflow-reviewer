@@ -1,0 +1,32 @@
+{
+ "case_id": "V03_unusual_formulation",
+ "covers": [
+  "unusual_formulation",
+  "nested_and_or",
+  "exceptions",
+  "units",
+  "interacting_rules"
+ ],
+ "defects": [],
+ "expected_status": "PASS",
+ "notes": "",
+ "oracle_actual": {},
+ "oracle_expected": {
+  "gold_min": 15,
+  "no_false_branch": false,
+  "order": [
+   "missing",
+   "urgent",
+   "gold",
+   "wait"
+  ],
+  "urgent_route": "priority_queue",
+  "vip_exc": true,
+  "wait": [
+   30,
+   ">="
+  ]
+ },
+ "paired_with": null,
+ "split": "dev"
+}

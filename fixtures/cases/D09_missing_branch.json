@@ -1,0 +1,168 @@
+{
+ "bundle": {
+  "approvals": [],
+  "bundle_id": "D09",
+  "requirements_doc": {
+   "doc_id": "support-policy",
+   "requirements": [
+    {
+     "anchor": "policy.md#R1",
+     "id": "R1",
+     "order": 10,
+     "text": "If the category is missing, route to manual review."
+    },
+    {
+     "anchor": "policy.md#R2",
+     "id": "R2",
+     "order": 20,
+     "text": "Otherwise, if the ticket is urgent, route to priority queue."
+    },
+    {
+     "anchor": "policy.md#R3",
+     "id": "R3",
+     "order": 40,
+     "text": "Otherwise, if waiting time is at least 30 minutes, route to escalation."
+    },
+    {
+     "anchor": "policy.md#R4",
+     "id": "R4",
+     "order": 90,
+     "text": "All remaining tickets are routed to the normal queue."
+    }
+   ],
+   "version": "v3"
+  },
+  "schema_version": "1",
+  "snippets": [
+   {
+    "entry": "route",
+    "id": "route_py",
+    "language": "python",
+    "location": "routing.py",
+    "source": "def route(t):\n    if t[\"category\"] is None:\n        return \"manual_review\"\n    if t[\"urgent\"]:\n        return \"priority_queue\"\n    if t[\"waiting_minutes\"] >= 30:\n        return \"escalation\"\n    return \"normal_queue\"\n",
+    "version": "v3"
+   }
+  ],
+  "specification": {
+   "artifact_id": "spec",
+   "default_route": "normal_queue",
+   "location": "spec.yaml",
+   "rules": [
+    {
+     "condition": {
+      "field": "category",
+      "op": "missing"
+     },
+     "id": "S-1",
+     "location": "spec.yaml#rules[0]",
+     "order": 10,
+     "ref": "R1",
+     "route": "manual_review"
+    },
+    {
+     "condition": {
+      "field": "urgent",
+      "op": "eq",
+      "value": true
+     },
+     "id": "S-2",
+     "location": "spec.yaml#rules[1]",
+     "order": 20,
+     "ref": "R2",
+     "route": "priority_queue"
+    },
+    {
+     "condition": {
+      "cmp": ">=",
+      "field": "waiting_minutes",
+      "op": "cmp",
+      "unit": "minutes",
+      "value": 30
+     },
+     "id": "S-3",
+     "location": "spec.yaml#rules[2]",
+     "order": 40,
+     "ref": "R3",
+     "route": "escalation"
+    }
+   ],
+   "version": "v3"
+  },
+  "workflow": {
+   "artifact_id": "wf",
+   "entry": "n_missing",
+   "location": "workflow.json",
+   "nodes": [
+    {
+     "condition": {
+      "field": "category",
+      "op": "missing"
+     },
+     "id": "n_missing",
+     "location": "workflow.json#n_missing",
+     "on_false": "n_urgent",
+     "on_true": "t_manual",
+     "type": "decision",
+     "version": "v3"
+    },
+    {
+     "condition": {
+      "field": "urgent",
+      "op": "eq",
+      "value": true
+     },
+     "id": "n_urgent",
+     "location": "workflow.json#n_urgent",
+     "on_false": "n_wait",
+     "on_true": "t_prio",
+     "type": "decision",
+     "version": "v3"
+    },
+    {
+     "condition": {
+      "cmp": ">=",
+      "field": "waiting_minutes",
+      "op": "cmp",
+      "unit": "minutes",
+      "value": 30
+     },
+     "id": "n_wait",
+     "location": "workflow.json#n_wait",
+     "on_true": "t_esc",
+     "type": "decision",
+     "version": "v3"
+    },
+    {
+     "id": "t_manual",
+     "location": "workflow.json#t_manual",
+     "route": "manual_review",
+     "type": "terminal",
+     "version": "v3"
+    },
+    {
+     "id": "t_prio",
+     "location": "workflow.json#t_prio",
+     "route": "priority_queue",
+     "type": "terminal",
+     "version": "v3"
+    },
+    {
+     "id": "t_esc",
+     "location": "workflow.json#t_esc",
+     "route": "escalation",
+     "type": "terminal",
+     "version": "v3"
+    },
+    {
+     "id": "t_norm",
+     "location": "workflow.json#t_norm",
+     "route": "normal_queue",
+     "type": "terminal",
+     "version": "v3"
+    }
+   ],
+   "version": "v3"
+  }
+ },
+ "run_config": {}
+}

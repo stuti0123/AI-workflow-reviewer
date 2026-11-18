@@ -1,0 +1,30 @@
+{
+ "case_id": "V04_renamed_reordered_paraphrased",
+ "covers": [
+  "rename_ids",
+  "reorder_records",
+  "paraphrase",
+  "paired_variant"
+ ],
+ "defects": [],
+ "expected_status": "PASS",
+ "notes": "",
+ "oracle_actual": {},
+ "oracle_expected": {
+  "gold_min": 15,
+  "no_false_branch": false,
+  "order": [
+   "missing",
+   "urgent",
+   "wait"
+  ],
+  "urgent_route": "priority_queue",
+  "vip_exc": false,
+  "wait": [
+   30,
+   ">="
+  ]
+ },
+ "paired_with": "V01_baseline",
+ "split": "heldout"
+}

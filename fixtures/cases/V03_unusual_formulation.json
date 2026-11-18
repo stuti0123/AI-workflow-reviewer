@@ -1,0 +1,278 @@
+{
+ "bundle": {
+  "approvals": [],
+  "bundle_id": "V03_unusual_formulation",
+  "requirements_doc": {
+   "doc_id": "support-policy",
+   "requirements": [
+    {
+     "anchor": "policy.md#R1",
+     "id": "R1",
+     "order": 10,
+     "text": "If the category is missing, route to manual review."
+    },
+    {
+     "anchor": "policy.md#R2",
+     "id": "R2",
+     "order": 20,
+     "text": "Otherwise, if the ticket is urgent, route to priority queue."
+    },
+    {
+     "anchor": "policy.md#RG",
+     "id": "RG",
+     "order": 30,
+     "text": "Otherwise, if tier is gold and waiting time is at least 15 minutes, route to priority queue."
+    },
+    {
+     "anchor": "policy.md#R3",
+     "id": "R3",
+     "order": 40,
+     "text": "Otherwise, if waiting time is at least 30 minutes, route to escalation."
+    },
+    {
+     "anchor": "policy.md#R3x",
+     "id": "R3x",
+     "kind": "exception",
+     "order": 45,
+     "parent": "R3",
+     "text": "Exception to R3: if tier is vip, route to priority queue."
+    },
+    {
+     "anchor": "policy.md#R4",
+     "id": "R4",
+     "order": 90,
+     "text": "All remaining tickets are routed to the normal queue."
+    }
+   ],
+   "version": "v3"
+  },
+  "schema_version": "1",
+  "snippets": [
+   {
+    "entry": "route",
+    "id": "route_py",
+    "language": "python",
+    "location": "routing.py",
+    "source": "def route(t):\n    c = t.get(\"category\")\n    if c is None:\n        return \"manual_review\"\n    w = t[\"waiting_minutes\"]\n    if t[\"urgent\"]:\n        return \"priority_queue\"\n    if t[\"tier\"] == \"gold\" and w >= 15:\n        return \"priority_queue\"\n    if not (w < 30):\n        if t[\"tier\"] in (\"vip\",):\n            return \"priority_queue\"\n        return \"escalation\"\n    return \"normal_queue\"\n",
+    "version": "v3"
+   }
+  ],
+  "specification": {
+   "artifact_id": "spec",
+   "default_route": "normal_queue",
+   "location": "spec.yaml",
+   "rules": [
+    {
+     "condition": {
+      "field": "category",
+      "op": "missing"
+     },
+     "id": "S-1",
+     "order": 10,
+     "ref": "R1",
+     "route": "manual_review"
+    },
+    {
+     "condition": {
+      "args": [
+       {
+        "field": "urgent",
+        "op": "eq",
+        "value": true
+       },
+       {
+        "args": [
+         {
+          "field": "urgent",
+          "op": "eq",
+          "value": true
+         },
+         {
+          "field": "tier",
+          "op": "eq",
+          "value": "gold"
+         }
+        ],
+        "op": "and"
+       }
+      ],
+      "op": "or"
+     },
+     "id": "S-2",
+     "order": 20,
+     "ref": "R2",
+     "route": "priority_queue"
+    },
+    {
+     "condition": {
+      "args": [
+       {
+        "field": "tier",
+        "op": "eq",
+        "value": "gold"
+       },
+       {
+        "arg": {
+         "cmp": "<",
+         "field": "waiting_minutes",
+         "op": "cmp",
+         "unit": "minutes",
+         "value": 15
+        },
+        "op": "not"
+       }
+      ],
+      "op": "and"
+     },
+     "id": "S-G",
+     "order": 30,
+     "ref": "RG",
+     "route": "priority_queue"
+    },
+    {
+     "condition": {
+      "arg": {
+       "cmp": "<",
+       "field": "waiting_minutes",
+       "op": "cmp",
+       "unit": "hours",
+       "value": 0.5
+      },
+      "op": "not"
+     },
+     "exceptions": [
+      {
+       "condition": {
+        "field": "tier",
+        "op": "eq",
+        "value": "vip"
+       },
+       "id": "S-3x",
+       "route": "priority_queue"
+      }
+     ],
+     "id": "S-3",
+     "order": 40,
+     "ref": "R3",
+     "route": "escalation"
+    }
+   ],
+   "version": "v3"
+  },
+  "workflow": {
+   "artifact_id": "wf",
+   "entry": "n_missing",
+   "location": "workflow.json",
+   "nodes": [
+    {
+     "condition": {
+      "field": "category",
+      "op": "missing"
+     },
+     "id": "n_missing",
+     "location": "workflow.json#n_missing",
+     "on_false": "n_urgent",
+     "on_true": "t_manual",
+     "type": "decision",
+     "version": "v3"
+    },
+    {
+     "condition": {
+      "field": "urgent",
+      "op": "eq",
+      "value": true
+     },
+     "id": "n_urgent",
+     "location": "workflow.json#n_urgent",
+     "on_false": "n_gold",
+     "on_true": "t_prio",
+     "type": "decision",
+     "version": "v3"
+    },
+    {
+     "condition": {
+      "args": [
+       {
+        "field": "tier",
+        "op": "eq",
+        "value": "gold"
+       },
+       {
+        "cmp": ">=",
+        "field": "waiting_minutes",
+        "op": "cmp",
+        "unit": "minutes",
+        "value": 15
+       }
+      ],
+      "op": "and"
+     },
+     "id": "n_gold",
+     "location": "workflow.json#n_gold",
+     "on_false": "n_wait",
+     "on_true": "t_prio",
+     "type": "decision",
+     "version": "v3"
+    },
+    {
+     "condition": {
+      "cmp": "<",
+      "field": "waiting_minutes",
+      "op": "cmp",
+      "unit": "minutes",
+      "value": 30
+     },
+     "id": "n_wait",
+     "location": "workflow.json#n_wait",
+     "on_false": "n_vip",
+     "on_true": "t_norm",
+     "type": "decision",
+     "version": "v3"
+    },
+    {
+     "condition": {
+      "field": "tier",
+      "op": "eq",
+      "value": "vip"
+     },
+     "id": "n_vip",
+     "location": "workflow.json#n_vip",
+     "on_false": "t_esc",
+     "on_true": "t_prio",
+     "type": "decision",
+     "version": "v3"
+    },
+    {
+     "id": "t_manual",
+     "location": "workflow.json#t_manual",
+     "route": "manual_review",
+     "type": "terminal",
+     "version": "v3"
+    },
+    {
+     "id": "t_prio",
+     "location": "workflow.json#t_prio",
+     "route": "priority_queue",
+     "type": "terminal",
+     "version": "v3"
+    },
+    {
+     "id": "t_esc",
+     "location": "workflow.json#t_esc",
+     "route": "escalation",
+     "type": "terminal",
+     "version": "v3"
+    },
+    {
+     "id": "t_norm",
+     "location": "workflow.json#t_norm",
+     "route": "normal_queue",
+     "type": "terminal",
+     "version": "v3"
+    }
+   ],
+   "version": "v3"
+  }
+ },
+ "run_config": {}
+}

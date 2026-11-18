@@ -1,0 +1,48 @@
+{
+ "case_id": "D01_threshold_changed",
+ "covers": [
+  "threshold"
+ ],
+ "defects": [
+  {
+   "artifact": "specification",
+   "rule_ref": "R3"
+  }
+ ],
+ "expected_status": "CHANGES_REQUIRED",
+ "notes": "",
+ "oracle_actual": {
+  "specification": {
+   "gold_min": 15,
+   "no_false_branch": false,
+   "order": [
+    "missing",
+    "urgent",
+    "wait"
+   ],
+   "urgent_route": "priority_queue",
+   "vip_exc": false,
+   "wait": [
+    35,
+    ">="
+   ]
+  }
+ },
+ "oracle_expected": {
+  "gold_min": 15,
+  "no_false_branch": false,
+  "order": [
+   "missing",
+   "urgent",
+   "wait"
+  ],
+  "urgent_route": "priority_queue",
+  "vip_exc": false,
+  "wait": [
+   30,
+   ">="
+  ]
+ },
+ "paired_with": null,
+ "split": "dev"
+}

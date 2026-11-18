@@ -1,0 +1,51 @@
+{
+ "case_id": "D08_interacting_plausible_rules",
+ "covers": [
+  "multiple_plausible_rules",
+  "exceptions",
+  "overlap"
+ ],
+ "defects": [
+  {
+   "artifact": "specification",
+   "rule_ref": null
+  }
+ ],
+ "expected_status": "CHANGES_REQUIRED",
+ "notes": "Each spec rule is plausible alone ('vip -> priority'); the defect only appears for vip tickets waiting < 30 minutes.",
+ "oracle_actual": {
+  "specification": {
+   "gold_min": 15,
+   "no_false_branch": false,
+   "order": [
+    "missing",
+    "urgent",
+    "vip_always",
+    "wait"
+   ],
+   "urgent_route": "priority_queue",
+   "vip_exc": false,
+   "wait": [
+    30,
+    ">="
+   ]
+  }
+ },
+ "oracle_expected": {
+  "gold_min": 15,
+  "no_false_branch": false,
+  "order": [
+   "missing",
+   "urgent",
+   "wait"
+  ],
+  "urgent_route": "priority_queue",
+  "vip_exc": true,
+  "wait": [
+   30,
+   ">="
+  ]
+ },
+ "paired_with": null,
+ "split": "heldout"
+}

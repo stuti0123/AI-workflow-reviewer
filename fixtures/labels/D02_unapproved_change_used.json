@@ -1,0 +1,49 @@
+{
+ "case_id": "D02_unapproved_change_used",
+ "covers": [
+  "unapproved_change",
+  "code_disagreement"
+ ],
+ "defects": [
+  {
+   "artifact": "code:route_py",
+   "rule_ref": "R3"
+  }
+ ],
+ "expected_status": "CHANGES_REQUIRED",
+ "notes": "",
+ "oracle_actual": {
+  "code:route_py": {
+   "gold_min": 15,
+   "no_false_branch": false,
+   "order": [
+    "missing",
+    "urgent",
+    "wait"
+   ],
+   "urgent_route": "priority_queue",
+   "vip_exc": false,
+   "wait": [
+    25,
+    ">="
+   ]
+  }
+ },
+ "oracle_expected": {
+  "gold_min": 15,
+  "no_false_branch": false,
+  "order": [
+   "missing",
+   "urgent",
+   "wait"
+  ],
+  "urgent_route": "priority_queue",
+  "vip_exc": false,
+  "wait": [
+   30,
+   ">="
+  ]
+ },
+ "paired_with": null,
+ "split": "dev"
+}

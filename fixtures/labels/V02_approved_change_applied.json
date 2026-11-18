@@ -1,0 +1,28 @@
+{
+ "case_id": "V02_approved_change_applied",
+ "covers": [
+  "approved_change",
+  "boundary"
+ ],
+ "defects": [],
+ "expected_status": "PASS",
+ "notes": "",
+ "oracle_actual": {},
+ "oracle_expected": {
+  "gold_min": 15,
+  "no_false_branch": false,
+  "order": [
+   "missing",
+   "urgent",
+   "wait"
+  ],
+  "urgent_route": "priority_queue",
+  "vip_exc": false,
+  "wait": [
+   25,
+   ">="
+  ]
+ },
+ "paired_with": null,
+ "split": "dev"
+}

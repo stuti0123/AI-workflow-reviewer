@@ -1,0 +1,27 @@
+{
+ "case_id": "V01_baseline",
+ "covers": [
+  "baseline"
+ ],
+ "defects": [],
+ "expected_status": "PASS",
+ "notes": "",
+ "oracle_actual": {},
+ "oracle_expected": {
+  "gold_min": 15,
+  "no_false_branch": false,
+  "order": [
+   "missing",
+   "urgent",
+   "wait"
+  ],
+  "urgent_route": "priority_queue",
+  "vip_exc": false,
+  "wait": [
+   30,
+   ">="
+  ]
+ },
+ "paired_with": null,
+ "split": "dev"
+}
