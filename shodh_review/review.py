@@ -28,6 +28,9 @@ class Config:
     max_requirements: int = 200
     max_snippet_chars: int = 20_000
     max_nodes: int = 500
+    max_prompt_chars: int = 40_000
+    max_model_attempts: int = 2          # total calls per review = 1 + retries; hard bound
+    validate_model_claims: bool = True   # ablation switch
 
 
 # ----------------------------------------------------------------------------- helpers
@@ -133,6 +136,22 @@ def _quote_spec_rule(spec, rid):
     return None
 
 
+def _relax(c: dict) -> dict:
+    """Replace numeric comparisons by 'true' (used to ask: does ticket satisfy R apart from its thresholds?)."""
+    op = c["op"]
+    if op == "cmp":
+        return {"op": "true"}
+    if op in ("and", "or"):
+        return {"op": op, "args": [_relax(a) for a in c["args"]]}
+    if op == "not":
+        return {"op": "not", "arg": _relax(c["arg"])}
+    return c
+
+
+def _has_cmp(c: dict) -> bool:
+    return any(a[1] in ("<", "<=", ">", ">=", "==") for a in atoms(c))
+
+
 def _equiv(c1: dict, c2: dict, grid) -> bool:
     return all(eval_cond(c1, t) == eval_cond(c2, t) for t in grid)
 
@@ -197,8 +216,7 @@ def _schema_errors(bundle):
 
 
 # ----------------------------------------------------------------------------- main
-def review(bundle: dict, cfg: Config | None = None) -> dict:
-    cfg = cfg or Config()
+def _review_core(bundle: dict, cfg: Config) -> dict:
     t0 = time.perf_counter()
     checks, findings, unreviewed = [], [], []
     report = {"reviewer_version": REVIEWER_VERSION, "bundle_id": bundle.get("bundle_id") if isinstance(bundle, dict) else None}
@@ -355,6 +373,19 @@ def review(bundle: dict, cfg: Config | None = None) -> dict:
         if any(a["status"] == "approved" for a in dm) and dm != bundle["approvals"]:
             alts.append(("unapproved_change_applied", derive_effective(doc, dm)[0][0]))
         fnd: dict[str, list] = {}
+        unrev = [r for r in cand.reqs if r.status != "reviewed"]
+        by_id = {r.id: r for r in cand.reqs}
+
+        def trusted(ef: str) -> bool:
+            """May a counterexample whose expected route comes from `ef` be called a blocker? Only if no requirement
+            we could not interpret is able to pre-empt that outcome (earlier precedence, or an exception to it)."""
+            if not unrev:
+                return True
+            if ef == "default" or ef not in by_id:
+                return False
+            e = by_id[ef]
+            base = by_id.get(e.parent, e) if e.kind == "exception" else e
+            return all(u.order > base.order and u.parent != base.id for u in unrev)
 
         def compare(artifact, version, actual_fn, where_loc, ev_fn, diag=None):
             dis = {}
@@ -362,7 +393,13 @@ def review(bundle: dict, cfg: Config | None = None) -> dict:
                 er, ef = route_policy(exp_pol, t)
                 ar, aw = actual_fn(t)
                 if er != ar:
-                    dis.setdefault(ef, []).append((t, er, ef, ar, aw))
+                    key = ef
+                    if ef == "default":  # a threshold drifting into the default region: attribute to the rule whose outcome fires
+                        hits = [r for r in cand.reqs if r.kind == "rule" and r.condition is not None and r.route == ar
+                                and _has_cmp(r.condition) and eval_cond(_relax(r.condition), t)]
+                        if len(hits) == 1:
+                            key = hits[0].id
+                    dis.setdefault(key, []).append((t, er, ef, ar, aw))
             out = []
             alt = _alt_explanation(artifact, lambda t: actual_fn(t), alts, grid, cand.label) if dis else None
             for key, lst in sorted(dis.items()):
@@ -377,9 +414,9 @@ def review(bundle: dict, cfg: Config | None = None) -> dict:
                     typ = "script_disagreement"
                 if key == "default" and not (diag and key in diag):
                     typ = "unrequested_behavior" if not ar.startswith("<") else typ
-                if alt and typ in ("behavior_mismatch", "script_disagreement", "threshold_mismatch", "boundary_mismatch", "unit_mismatch", "condition_mismatch"):
+                if alt and typ in ("behavior_mismatch", "script_disagreement", "unrequested_behavior", "threshold_mismatch", "boundary_mismatch", "unit_mismatch", "condition_mismatch"):
                     typ = alt
-                exp_txt = f"requirement {key}" if key != "default" else "the default rule"
+                exp_txt = f"requirement {ef}" if ef != "default" else "the default rule, i.e. no requirement matches"
                 base = f"{artifact}: for this ticket the effective requirements ({exp_txt}) give '{er}' but the artifact gives '{ar}'"
                 msg = (msg + ". " if msg else "") + base
                 if alt == "approved_change_not_implemented":
@@ -394,7 +431,11 @@ def review(bundle: dict, cfg: Config | None = None) -> dict:
                 ev = [{"artifact": artifact, "location": loc, "quote": quote}]
                 if req is not None:
                     ev.append({"artifact": "requirements", "location": req.anchor, "quote": req.effective_text})
-                out.append(finding("blocker" if policy_complete else "major", typ, msg, rule_ref=None if key == "default" else key,
+                if ar == "<cycle>":
+                    typ = "workflow_cycle"
+                if not trusted(ef):
+                    msg += " [not a blocker: a requirement that could not be interpreted may pre-empt this outcome]"
+                out.append(finding("blocker" if trusted(ef) else "major", typ, msg, rule_ref=None if key == "default" else key,
                                    artifact=artifact, version=version, location=loc, evidence=ev, correction=corr,
                                    counterexample=_cx(t, er, ef, ar, aw if isinstance(aw, (str, int)) else str(aw), artifact),
                                    n_disagreeing_tickets=len(lst), candidate=cand.label))
@@ -512,3 +553,135 @@ def _finish(report, status, findings, checks, unreviewed, coverage, t0, bundle, 
     report.update({"status": status, "summary": summary, "findings": findings, "coverage": {**coverage, "unreviewed_scope": unreviewed},
                    "checks": checks, "usage": {"runtime_s": round(time.perf_counter() - t0, 4), "model_calls": 0, "model_retries": 0}})
     return report
+
+
+# ----------------------------------------------------------------------------- Stage 3 wrapper: model, cache
+def _canon(x) -> str:
+    return json.dumps(x, sort_keys=True, separators=(",", ":"), default=str)
+
+
+def input_fingerprint(bundle, cfg, model, model_required) -> str:
+    import hashlib
+    m = None if model is None else {"name": model.name, "model_id": getattr(model, "model_id", None), "required": model_required}
+    return hashlib.sha256(_canon({"bundle": bundle, "cfg": cfg.__dict__, "model": m, "reviewer": REVIEWER_VERSION}).encode()).hexdigest()
+
+
+class ReportCache:
+    """Keyed by sha256 of (whole bundle incl. approvals + config + reviewer version + model config). Any changed
+    artifact/approval changes the key, so a stale passing report can never be returned. Reports whose required
+    model check failed are not cached (transient)."""
+
+    def __init__(self, directory: str | None = None):
+        self.dir = Path(directory) if directory else None
+        self.mem: dict[str, dict] = {}
+        self.hits = self.misses = 0
+        if self.dir:
+            self.dir.mkdir(parents=True, exist_ok=True)
+
+    def get(self, key: str):
+        r = self.mem.get(key)
+        if r is None and self.dir and (self.dir / f"{key}.json").exists():
+            r = json.loads((self.dir / f"{key}.json").read_text())
+        if r is not None and r.get("inputs", {}).get("fingerprint") == key:
+            self.hits += 1
+            return json.loads(json.dumps(r))
+        self.misses += 1
+        return None
+
+    def put(self, key: str, report: dict):
+        self.mem[key] = report
+        if self.dir:
+            (self.dir / f"{key}.json").write_text(json.dumps(report))
+
+
+def review(bundle: dict, cfg: Config | None = None, model=None, model_required: bool = False, cache: ReportCache | None = None) -> dict:
+    from .model import run_model_review
+    cfg = cfg or Config()
+    key = input_fingerprint(bundle, cfg, model, model_required)
+    if cache is not None:
+        hit = cache.get(key)
+        if hit is not None:
+            hit["cache"] = {"hit": True, "fingerprint": key}
+            return hit
+    rep = _review_core(bundle, cfg)
+    rep["inputs"] = {"fingerprint": key}
+    rep["cache"] = {"hit": False, "fingerprint": key}
+    rep["model"] = {"configured": False, "note": "no model configured: model judgment was not part of this review"}
+    if model is not None and rep["coverage"].get("requirements") is not None and rep["checks"][0]["status"] == "passed":
+        mo = run_model_review(bundle, rep, model, cfg)
+        _merge_model(rep, mo, model_required)
+    if cache is not None and not (rep["model"].get("configured") and rep["model"].get("status") != "ok" and model_required):
+        cache.put(key, rep)
+    return rep
+
+
+def _merge_model(rep: dict, mo: dict, required: bool):
+    calls = len(mo["attempts"])
+    rep["usage"].update({"model_calls": calls, "model_retries": max(0, calls - 1),
+                         "model_tokens": {"input": sum((a.get("usage") or {}).get("input_tokens") or 0 for a in mo["attempts"]),
+                                          "output": sum((a.get("usage") or {}).get("output_tokens") or 0 for a in mo["attempts"])}})
+    det_blockers = {(f["artifact"], f["rule_ref"]) for f in rep["findings"] if f["severity"] == "blocker"}
+    det_blocker_arts = {a for a, _ in det_blockers}
+    reviewed = {n for n, c in rep["coverage"]["artifacts"].items() if c["status"] == "reviewed"}
+    conflicts = []
+    for f in mo["accepted_findings"]:
+        art, ref = f["artifact"], f.get("rule_ref")
+        corroborated = any(a == art and (ref is None or r == ref or r is None) for a, r in det_blockers)
+        sev = f["severity"]
+        note = ""
+        if sev in ("blocker", "major") and not corroborated:
+            if art in reviewed and art not in ("requirements", "approvals"):
+                # deterministic exhaustive check found this artifact equivalent for the cited rule
+                conflicts.append({"type": "model_claim_contradicted_by_exhaustive_check", "artifact": art, "rule_ref": ref, "claim": f["claim"]})
+                sev, note = "info", " [contradicted by the exhaustive deterministic check; kept as info only]"
+            else:
+                sev, note = "minor", " [unverified model claim: advisory only, cannot establish a blocker]"
+        rep["findings"].append(finding(sev, "model_observation", f["claim"] + note, rule_ref=ref, artifact=art, location=f["location"],
+                                       evidence=[{"artifact": art, "location": f["location"], "quote": f["evidence_quote"]}],
+                                       correction=f.get("correction"), confidence="model", source="model", corroborated_by_deterministic=corroborated))
+    if mo["status"] == "ok" and mo["verdict_opinion"] == "PASS" and (rep["status"] != "PASS"):
+        conflicts.append({"type": "model_verdict_conflicts_with_deterministic_status", "model_verdict": "PASS", "deterministic_status": rep["status"]})
+    mo["conflicts"] = conflicts
+    mo["accepted_findings"] = len(mo["accepted_findings"])
+    rep["model"] = mo
+    ok = mo["status"] == "ok"
+    rep["checks"].append({"name": "model_review", "kind": "model", "status": "passed" if ok else "failed", "required": required,
+                          "details": [mo.get("error") or "ok", f"calls={calls}"]})
+    if not ok and required:
+        rep["coverage"]["unreviewed_scope"].append(f"model review required but failed ({mo['error']}); no model-based review of ambiguous/out-of-language content")
+        if rep["status"] == "PASS":
+            rep["status"] = "INCOMPLETE"
+            rep["summary"] = f"Deterministic checks passed, but the required model review failed ({mo['error']}); not reported as PASS."
+        else:
+            rep["summary"] += f" Required model review failed ({mo['error']}); disclosed as unreviewed."
+    for i, f in enumerate(sorted(rep["findings"], key=lambda f: (SEV_RANK[f["severity"]], f.get("artifact") or "", f.get("rule_ref") or "")), 1):
+        f["id"] = f"F-{i:03d}"
+    rep["findings"].sort(key=lambda f: f["id"])
+
+
+def route_ticket(bundle: dict, raw_ticket: dict) -> dict:
+    """Debug aid / documented ticket-input contract: route one ticket through every artifact.
+    Ticket fields: category (str|null), tier (str|null), urgent (bool), waiting_minutes (number >= 0)."""
+    from .lang import ticket_in
+    t = ticket_in(raw_ticket)
+    cands, _ = derive_effective(bundle["requirements_doc"], bundle["approvals"])
+    out = {"ticket": ticket_out(t), "effective_requirements": []}
+    for c in cands:
+        r, fired = route_policy(c.policy(), t)
+        out["effective_requirements"].append({"candidate": c.label, "route": r, "fired": fired})
+    sp, _ = _spec_policy(bundle["specification"])
+    out["specification"] = dict(zip(("route", "fired"), route_policy(sp, t))) if sp else "unreviewable"
+    _, nodes, bad = _workflow_structure(bundle["workflow"])
+    if not bad and bundle["workflow"]["entry"] in nodes:
+        r, path = _walk_workflow(nodes, bundle["workflow"]["entry"], t)
+        out["workflow"] = {"route": r, "path": path}
+    else:
+        out["workflow"] = "unreviewable"
+    for s in bundle["snippets"]:
+        try:
+            fn, p = pycode.parse_snippet(s["source"], s.get("entry"))
+            r, ln = pycode.run_snippet(fn, p, t)
+            out[f"code:{s['id']}"] = {"route": r, "line": ln}
+        except (Unsupported, SyntaxError) as e:
+            out[f"code:{s['id']}"] = f"unreviewable: {e}"
+    return out

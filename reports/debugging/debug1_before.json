@@ -1,0 +1,45 @@
+{
+ "case": "D02_unapproved_change_used",
+ "checkpoint": "checkpoint-1",
+ "status": "CHANGES_REQUIRED",
+ "blocker_findings": [
+  {
+   "severity": "blocker",
+   "type": "unrequested_behavior",
+   "rule_ref": null,
+   "artifact": "code:route_py",
+   "version": "v3",
+   "location": "routing.py:L7",
+   "message": "code:route_py: for this ticket the effective requirements (the default rule) give 'normal_queue' but the artifact gives 'escalation'; the artifact matches an *unapproved* suggested change",
+   "evidence": [
+    {
+     "artifact": "code:route_py",
+     "location": "routing.py:L7",
+     "quote": "return \"escalation\""
+    }
+   ],
+   "correction": "Remove or constrain the behaviour that sends this ticket to 'escalation'; the effective requirements route it to 'normal_queue'.",
+   "counterexample": {
+    "ticket": {
+     "category": "__other__",
+     "tier": null,
+     "urgent": false,
+     "waiting_minutes": 25
+    },
+    "expected_route": "normal_queue",
+    "expected_by": "default",
+    "actual_route": "escalation",
+    "actual_by": 7,
+    "artifact": "code:route_py"
+   },
+   "confidence": "exhaustive",
+   "source": "deterministic",
+   "n_disagreeing_tickets": 60,
+   "candidate": "baseline",
+   "id": "F-001"
+  }
+ ],
+ "info_findings": [
+  "unapproved_change_ignored: A2 has status 'suggested' and is not applied"
+ ]
+}

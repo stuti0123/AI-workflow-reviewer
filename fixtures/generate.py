@@ -203,6 +203,13 @@ case("D13_model_claims_pass_over_defect", "dev", "CHANGES_REQUIRED", bundle("D13
      defects=[{"artifact": "code:route_py", "rule_ref": "R3"}], act={"code:route_py": P(op=">")},
      run={"model": {"client": "fake", "mode": "claims_pass", "required": True}})
 
+# Added after checkpoint-1 as DEVELOPMENT evidence (found while probing edge cases, see docs/debugging)
+_r14 = std_reqs()
+_r14.insert(-1, {"id": "R5", "anchor": "policy.md#R5", "order": 80, "text": "Customers who seem upset should generally be handled with extra care."})
+case("D14_defect_before_unsupported_requirement", "dev", "CHANGES_REQUIRED", bundle("D14", reqs=_r14, code=std_code(30, ">")),
+     ["boundary", "code_disagreement", "unsupported_language"], defects=[{"artifact": "code:route_py", "rule_ref": "R3"}], act={"code:route_py": P(op=">")},
+     note="R5 is unsupported but ranks AFTER R3 (order 80 > 40), so it cannot pre-empt R3: the R3 boundary defect is still an evidenced blocker.")
+
 # ================= incomplete
 case("I01_approval_conflict_same_seq", "dev", "INCOMPLETE",
      bundle("I01", approvals=[appr("A1", to="25 minutes"), appr("A2", to="20 minutes")], spec=std_spec(25), wf=std_wf(25), code=std_code(25)),

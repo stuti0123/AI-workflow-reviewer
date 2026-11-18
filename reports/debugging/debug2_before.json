@@ -1,0 +1,36 @@
+{
+ "case": "D14_defect_before_unsupported_requirement",
+ "implementation": "before fix (checkpoint-1 + attribution fix + stage-3)",
+ "status": "INCOMPLETE",
+ "summary": "No blocker established, but review is incomplete: requirement R5: unsupported ('Customers who seem upset should generally be handled with extra care.': sentence does not match a supported routing pattern)",
+ "findings": [
+  {
+   "severity": "major",
+   "type": "script_disagreement",
+   "artifact": "code:route_py",
+   "rule_ref": "R3",
+   "message": "code:route_py: for this ticket the effective requirements (requirement R3) give 'escalation' but the artifact gives 'normal_queue'",
+   "counterexample": {
+    "ticket": {
+     "category": "__other__",
+     "tier": null,
+     "urgent": false,
+     "waiting_minutes": 30
+    },
+    "expected_route": "escalation",
+    "expected_by": "R3",
+    "actual_route": "normal_queue",
+    "actual_by": 8,
+    "artifact": "code:route_py"
+   }
+  },
+  {
+   "severity": "major",
+   "type": "unsupported_content",
+   "artifact": "requirements",
+   "rule_ref": "R5",
+   "message": "requirement R5 is outside the supported source language and was not checked: 'Customers who seem upset should generally be handled with extra care.': sentence does not match a supported routing pattern",
+   "counterexample": null
+  }
+ ]
+}
