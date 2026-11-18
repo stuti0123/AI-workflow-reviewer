@@ -23,6 +23,23 @@ python eval/freeze.py verify
 # CLI: python -m shodh_review review <bundle.json>  (a case file in fixtures\cases holds the bundle under its "bundle" key)
 ```
 
+## Evaluation snapshot
+
+| Metric | Final result |
+|---|---:|
+| Total fixtures | 28 |
+| Overall exact status match | 28/28 |
+| Held-out exact status match | 7/7 |
+| False passes | 0/14 |
+| False blocks | 0/7 |
+| Incomplete cases correctly identified | 7/7 |
+| Unit and regression tests | 25 passed |
+
+All results are from synthetic fixtures using a deterministic reviewer
+and fake model client. Real-model performance has not been measured.
+
+See `reports/summary.md` and `docs/ENGINEERING_NOTE.md` for details.
+
 ## Layout
 - `shodh_review/` reviewer: `lang.py` (condition language), `effective.py` (approvals), `pycode.py` (Python subset), `review.py`, `model.py` (client interface, fake client), `cli.py`
 - `schemas/` bundle contracts · `fixtures/` cases, `labels/` (separate from inputs), `generate.py` (seeded)
