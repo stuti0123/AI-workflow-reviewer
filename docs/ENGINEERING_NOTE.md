@@ -44,6 +44,8 @@ Resources (fake client / offline): 0.59 s for all 28 bundles, 30 model calls, 2 
 No fault injection was used in the debugging examples.
 
 ## 6. Limitations
+* **Freeze provenance.** The held-out labels were committed with checkpoint-1, but `eval/freeze.json` was committed only after the final implementation commit, so git history cannot prove the held-out cases were untouched during tuning. The freeze guarantees only that labels, cases and code have not changed since it was recorded. The sentence in `eval/freeze.json` saying the cases were never run is the original author's statement and is not independently verified.
+* **Debug example 2** before-output comes from an intermediate, uncommitted state; checkpoint-1 independently reproduces the same INCOMPLETE status on D14.
 * Single-ticket routing over four declared fields; the language has no arithmetic across fields, regexes, loops or state. Prose outside the patterns is only listed as unreviewed.
 * Exhaustiveness is claimed only for the structured language and the Python subset, not for arbitrary prose or Python.
 * Real-model behavior is unmeasured; the fake client cannot show model quality. The prompt and interface are provided for a live run.
