@@ -1,0 +1,778 @@
+{
+ "implementation": "/home/claude/shodh-review/shodh_review",
+ "split": "dev",
+ "ablation": null,
+ "supports_model_integration": true,
+ "n_cases": 21,
+ "decision_correctness": {
+  "false_passes": {
+   "count": 0,
+   "denominator": 11,
+   "label": "PASS predicted / defective cases"
+  },
+  "false_blocks": {
+   "count": 0,
+   "denominator": 6,
+   "label": "CHANGES_REQUIRED predicted / valid cases"
+  },
+  "valid_cases_passed": {
+   "count": 6,
+   "denominator": 6
+  },
+  "defective_cases_blocked": {
+   "count": 11,
+   "denominator": 11
+  },
+  "incomplete_cases_marked_incomplete": {
+   "count": 4,
+   "denominator": 4
+  },
+  "abstentions_on_valid": 0,
+  "abstentions_on_defective": 0,
+  "incomplete_cases_false_pass": 0,
+  "incomplete_cases_false_block": 0,
+  "status_exact_match": {
+   "count": 21,
+   "denominator": 21
+  },
+  "confusion_by_case_type": {
+   "valid": {
+    "PASS": 6
+   },
+   "defective": {
+    "CHANGES_REQUIRED": 11
+   },
+   "incomplete": {
+    "INCOMPLETE": 4
+   }
+  }
+ },
+ "finding_quality": {
+  "labeled_defects": 13,
+  "defect_artifact_found": {
+   "count": 13,
+   "denominator": 13
+  },
+  "defect_artifact_and_rule_correct": {
+   "count": 13,
+   "denominator": 13
+  },
+  "evidence_grounded": {
+   "count": 13,
+   "denominator": 13
+  },
+  "counterexample_valid_vs_independent_oracle": {
+   "count": 13,
+   "denominator": 13
+  },
+  "unsupported_blocker_findings": {
+   "count": 0,
+   "denominator": 13,
+   "label": "blocker findings that are unlabeled, ungrounded or contradicted by the oracle / all blocker findings"
+  },
+  "model_claims_rejected": 1
+ },
+ "paired_variants": [],
+ "resource_use": {
+  "fake_client_or_offline": {
+   "total_runtime_s": 0.4568,
+   "mean_case_runtime_s": 0.02157,
+   "model_calls": 21,
+   "model_retries": 0
+  },
+  "real_model": "not measured - no model access was used for any number in this report"
+ },
+ "cases": [
+  {
+   "case": "D01_threshold_changed",
+   "split": "dev",
+   "expected": "CHANGES_REQUIRED",
+   "predicted": "CHANGES_REQUIRED",
+   "error": null,
+   "defects": [
+    {
+     "defect": {
+      "artifact": "specification",
+      "rule_ref": "R3"
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    }
+   ],
+   "unsupported_findings": [],
+   "n_findings": 1,
+   "n_blockers": 1,
+   "runtime_s": 0.02605,
+   "usage": {
+    "runtime_s": 0.0254,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 732,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "threshold_mismatch"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "D02_unapproved_change_used",
+   "split": "dev",
+   "expected": "CHANGES_REQUIRED",
+   "predicted": "CHANGES_REQUIRED",
+   "error": null,
+   "defects": [
+    {
+     "defect": {
+      "artifact": "code:route_py",
+      "rule_ref": "R3"
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    }
+   ],
+   "unsupported_findings": [],
+   "n_findings": 2,
+   "n_blockers": 1,
+   "runtime_s": 0.03248,
+   "usage": {
+    "runtime_s": 0.032,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 781,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "unapproved_change_applied"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "D03_wrong_precedence",
+   "split": "dev",
+   "expected": "CHANGES_REQUIRED",
+   "predicted": "CHANGES_REQUIRED",
+   "error": null,
+   "defects": [
+    {
+     "defect": {
+      "artifact": "specification",
+      "rule_ref": "R1"
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    }
+   ],
+   "unsupported_findings": [],
+   "n_findings": 1,
+   "n_blockers": 1,
+   "runtime_s": 0.01999,
+   "usage": {
+    "runtime_s": 0.0196,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 732,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "precedence_error"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "D04_omitted_requirement",
+   "split": "dev",
+   "expected": "CHANGES_REQUIRED",
+   "predicted": "CHANGES_REQUIRED",
+   "error": null,
+   "defects": [
+    {
+     "defect": {
+      "artifact": "specification",
+      "rule_ref": "RG"
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    }
+   ],
+   "unsupported_findings": [],
+   "n_findings": 1,
+   "n_blockers": 1,
+   "runtime_s": 0.03726,
+   "usage": {
+    "runtime_s": 0.0369,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 872,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "omitted_requirement"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "D05_boundary_code_exclusive",
+   "split": "dev",
+   "expected": "CHANGES_REQUIRED",
+   "predicted": "CHANGES_REQUIRED",
+   "error": null,
+   "defects": [
+    {
+     "defect": {
+      "artifact": "code:route_py",
+      "rule_ref": "R3"
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    }
+   ],
+   "unsupported_findings": [],
+   "n_findings": 1,
+   "n_blockers": 1,
+   "runtime_s": 0.01265,
+   "usage": {
+    "runtime_s": 0.0124,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 732,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "script_disagreement"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "D06_unit_hours_vs_minutes",
+   "split": "dev",
+   "expected": "CHANGES_REQUIRED",
+   "predicted": "CHANGES_REQUIRED",
+   "error": null,
+   "defects": [
+    {
+     "defect": {
+      "artifact": "workflow",
+      "rule_ref": "R3"
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    }
+   ],
+   "unsupported_findings": [],
+   "n_findings": 1,
+   "n_blockers": 1,
+   "runtime_s": 0.01269,
+   "usage": {
+    "runtime_s": 0.0124,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 731,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "behavior_mismatch"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "D07_wrong_branch_destination",
+   "split": "dev",
+   "expected": "CHANGES_REQUIRED",
+   "predicted": "CHANGES_REQUIRED",
+   "error": null,
+   "defects": [
+    {
+     "defect": {
+      "artifact": "workflow",
+      "rule_ref": "R2"
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    }
+   ],
+   "unsupported_findings": [],
+   "n_findings": 2,
+   "n_blockers": 1,
+   "runtime_s": 0.01416,
+   "usage": {
+    "runtime_s": 0.0139,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 732,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "behavior_mismatch"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "D09_missing_branch",
+   "split": "dev",
+   "expected": "CHANGES_REQUIRED",
+   "predicted": "CHANGES_REQUIRED",
+   "error": null,
+   "defects": [
+    {
+     "defect": {
+      "artifact": "workflow",
+      "rule_ref": null
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    }
+   ],
+   "unsupported_findings": [],
+   "n_findings": 3,
+   "n_blockers": 1,
+   "runtime_s": 0.01325,
+   "usage": {
+    "runtime_s": 0.013,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 726,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "missing_branch"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "D11_approved_change_not_implemented",
+   "split": "dev",
+   "expected": "CHANGES_REQUIRED",
+   "predicted": "CHANGES_REQUIRED",
+   "error": null,
+   "defects": [
+    {
+     "defect": {
+      "artifact": "specification",
+      "rule_ref": "R3"
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    },
+    {
+     "defect": {
+      "artifact": "workflow",
+      "rule_ref": "R3"
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    },
+    {
+     "defect": {
+      "artifact": "code:route_py",
+      "rule_ref": "R3"
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    }
+   ],
+   "unsupported_findings": [],
+   "n_findings": 3,
+   "n_blockers": 3,
+   "runtime_s": 0.02408,
+   "usage": {
+    "runtime_s": 0.0238,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 782,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "approved_change_not_implemented"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "D13_model_claims_pass_over_defect",
+   "split": "dev",
+   "expected": "CHANGES_REQUIRED",
+   "predicted": "CHANGES_REQUIRED",
+   "error": null,
+   "defects": [
+    {
+     "defect": {
+      "artifact": "code:route_py",
+      "rule_ref": "R3"
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    }
+   ],
+   "unsupported_findings": [],
+   "n_findings": 1,
+   "n_blockers": 1,
+   "runtime_s": 0.01271,
+   "usage": {
+    "runtime_s": 0.0125,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 732,
+     "output": 32
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "script_disagreement"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "D14_defect_before_unsupported_requirement",
+   "split": "dev",
+   "expected": "CHANGES_REQUIRED",
+   "predicted": "CHANGES_REQUIRED",
+   "error": null,
+   "defects": [
+    {
+     "defect": {
+      "artifact": "code:route_py",
+      "rule_ref": "R3"
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    }
+   ],
+   "unsupported_findings": [],
+   "n_findings": 2,
+   "n_blockers": 1,
+   "runtime_s": 0.01273,
+   "usage": {
+    "runtime_s": 0.0125,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 809,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "script_disagreement",
+    "unsupported_content"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "I01_approval_conflict_same_seq",
+   "split": "dev",
+   "expected": "INCOMPLETE",
+   "predicted": "INCOMPLETE",
+   "error": null,
+   "defects": [],
+   "unsupported_findings": [],
+   "n_findings": 2,
+   "n_blockers": 0,
+   "runtime_s": 0.02973,
+   "usage": {
+    "runtime_s": 0.0295,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 854,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "approval_conflict",
+    "approval_conflict_unresolved"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "I02_unsupported_requirement",
+   "split": "dev",
+   "expected": "INCOMPLETE",
+   "predicted": "INCOMPLETE",
+   "error": null,
+   "defects": [],
+   "unsupported_findings": [],
+   "n_findings": 1,
+   "n_blockers": 0,
+   "runtime_s": 0.01278,
+   "usage": {
+    "runtime_s": 0.0125,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 808,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "unsupported_content"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "I04_unsupported_python",
+   "split": "dev",
+   "expected": "INCOMPLETE",
+   "predicted": "INCOMPLETE",
+   "error": null,
+   "defects": [],
+   "unsupported_findings": [],
+   "n_findings": 1,
+   "n_blockers": 0,
+   "runtime_s": 0.00164,
+   "usage": {
+    "runtime_s": 0.0015,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 758,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "unsupported_code"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "I07_approved_and_rejected_same_change",
+   "split": "dev",
+   "expected": "INCOMPLETE",
+   "predicted": "INCOMPLETE",
+   "error": null,
+   "defects": [],
+   "unsupported_findings": [],
+   "n_findings": 3,
+   "n_blockers": 0,
+   "runtime_s": 0.02591,
+   "usage": {
+    "runtime_s": 0.0256,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 854,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "approval_conflict",
+    "approval_conflict_unresolved"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "V01_baseline",
+   "split": "dev",
+   "expected": "PASS",
+   "predicted": "PASS",
+   "error": null,
+   "defects": [],
+   "unsupported_findings": [],
+   "n_findings": 0,
+   "n_blockers": 0,
+   "runtime_s": 0.01249,
+   "usage": {
+    "runtime_s": 0.0123,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 724,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [],
+   "paired_with": null
+  },
+  {
+   "case": "V02_approved_change_applied",
+   "split": "dev",
+   "expected": "PASS",
+   "predicted": "PASS",
+   "error": null,
+   "defects": [],
+   "unsupported_findings": [],
+   "n_findings": 0,
+   "n_blockers": 0,
+   "runtime_s": 0.01456,
+   "usage": {
+    "runtime_s": 0.0143,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 771,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [],
+   "paired_with": null
+  },
+  {
+   "case": "V03_unusual_formulation",
+   "split": "dev",
+   "expected": "PASS",
+   "predicted": "PASS",
+   "error": null,
+   "defects": [],
+   "unsupported_findings": [],
+   "n_findings": 0,
+   "n_blockers": 0,
+   "runtime_s": 0.077,
+   "usage": {
+    "runtime_s": 0.0762,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 1074,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [],
+   "paired_with": null
+  },
+  {
+   "case": "V05_unapproved_suggestion_ignored",
+   "split": "dev",
+   "expected": "PASS",
+   "predicted": "PASS",
+   "error": null,
+   "defects": [],
+   "unsupported_findings": [],
+   "n_findings": 1,
+   "n_blockers": 0,
+   "runtime_s": 0.03266,
+   "usage": {
+    "runtime_s": 0.0322,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 771,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [],
+   "paired_with": null
+  },
+  {
+   "case": "V06_model_invented_refs",
+   "split": "dev",
+   "expected": "PASS",
+   "predicted": "PASS",
+   "error": null,
+   "defects": [],
+   "unsupported_findings": [],
+   "n_findings": 0,
+   "n_blockers": 0,
+   "runtime_s": 0.01505,
+   "usage": {
+    "runtime_s": 0.0147,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 724,
+     "output": 77
+    }
+   },
+   "model_rejected_claims": [
+    {
+     "finding": {
+      "rule_ref": "R99",
+      "artifact": "specification",
+      "location": "spec.yaml#rules[0]",
+      "severity": "blocker",
+      "claim": "Rule R99 sends everything to escalation",
+      "evidence_quote": "route everything to escalation",
+      "correction": "delete R99"
+     },
+     "reason": "invented_rule_ref"
+    }
+   ],
+   "finding_types": [],
+   "paired_with": null
+  },
+  {
+   "case": "V07_prose_approval_claim_ignored",
+   "split": "dev",
+   "expected": "PASS",
+   "predicted": "PASS",
+   "error": null,
+   "defects": [],
+   "unsupported_findings": [],
+   "n_findings": 1,
+   "n_blockers": 0,
+   "runtime_s": 0.01311,
+   "usage": {
+    "runtime_s": 0.0128,
+    "model_calls": 1,
+    "model_retries": 0,
+    "model_tokens": {
+     "input": 742,
+     "output": 17
+    }
+   },
+   "model_rejected_claims": [],
+   "finding_types": [],
+   "paired_with": null
+  }
+ ]
+}

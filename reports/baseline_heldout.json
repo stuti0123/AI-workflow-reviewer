@@ -1,0 +1,269 @@
+{
+ "implementation": "/home/claude/shodh-review/checkpoints/checkpoint1/shodh_review",
+ "split": "heldout",
+ "ablation": null,
+ "supports_model_integration": false,
+ "n_cases": 7,
+ "decision_correctness": {
+  "false_passes": {
+   "count": 0,
+   "denominator": 3,
+   "label": "PASS predicted / defective cases"
+  },
+  "false_blocks": {
+   "count": 0,
+   "denominator": 1,
+   "label": "CHANGES_REQUIRED predicted / valid cases"
+  },
+  "valid_cases_passed": {
+   "count": 1,
+   "denominator": 1
+  },
+  "defective_cases_blocked": {
+   "count": 3,
+   "denominator": 3
+  },
+  "incomplete_cases_marked_incomplete": {
+   "count": 1,
+   "denominator": 3
+  },
+  "abstentions_on_valid": 0,
+  "abstentions_on_defective": 0,
+  "incomplete_cases_false_pass": 2,
+  "incomplete_cases_false_block": 0,
+  "status_exact_match": {
+   "count": 5,
+   "denominator": 7
+  },
+  "confusion_by_case_type": {
+   "valid": {
+    "PASS": 1
+   },
+   "defective": {
+    "CHANGES_REQUIRED": 3
+   },
+   "incomplete": {
+    "PASS": 2,
+    "INCOMPLETE": 1
+   }
+  }
+ },
+ "finding_quality": {
+  "labeled_defects": 3,
+  "defect_artifact_found": {
+   "count": 3,
+   "denominator": 3
+  },
+  "defect_artifact_and_rule_correct": {
+   "count": 3,
+   "denominator": 3
+  },
+  "evidence_grounded": {
+   "count": 3,
+   "denominator": 3
+  },
+  "counterexample_valid_vs_independent_oracle": {
+   "count": 3,
+   "denominator": 3
+  },
+  "unsupported_blocker_findings": {
+   "count": 0,
+   "denominator": 3,
+   "label": "blocker findings that are unlabeled, ungrounded or contradicted by the oracle / all blocker findings"
+  },
+  "model_claims_rejected": 0
+ },
+ "paired_variants": [],
+ "resource_use": {
+  "fake_client_or_offline": {
+   "total_runtime_s": 0.1332,
+   "mean_case_runtime_s": 0.01881,
+   "model_calls": 0,
+   "model_retries": 0
+  },
+  "real_model": "not measured - no model access was used for any number in this report"
+ },
+ "cases": [
+  {
+   "case": "D08_interacting_plausible_rules",
+   "split": "heldout",
+   "expected": "CHANGES_REQUIRED",
+   "predicted": "CHANGES_REQUIRED",
+   "error": null,
+   "defects": [
+    {
+     "defect": {
+      "artifact": "specification",
+      "rule_ref": null
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    }
+   ],
+   "unsupported_findings": [],
+   "n_findings": 1,
+   "n_blockers": 1,
+   "runtime_s": 0.02468,
+   "usage": {
+    "runtime_s": 0.0245,
+    "model_calls": 0,
+    "model_retries": 0
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "unrequested_behavior"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "D10_injection_plus_defect",
+   "split": "heldout",
+   "expected": "CHANGES_REQUIRED",
+   "predicted": "CHANGES_REQUIRED",
+   "error": null,
+   "defects": [
+    {
+     "defect": {
+      "artifact": "code:route_py",
+      "rule_ref": "R3"
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    }
+   ],
+   "unsupported_findings": [],
+   "n_findings": 3,
+   "n_blockers": 1,
+   "runtime_s": 0.01556,
+   "usage": {
+    "runtime_s": 0.0154,
+    "model_calls": 0,
+    "model_retries": 0
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "script_disagreement"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "D12_threshold_changed_renamed_variant",
+   "split": "heldout",
+   "expected": "CHANGES_REQUIRED",
+   "predicted": "CHANGES_REQUIRED",
+   "error": null,
+   "defects": [
+    {
+     "defect": {
+      "artifact": "specification",
+      "rule_ref": "REQ-C"
+     },
+     "found_blocker_on_artifact": true,
+     "matched_with_rule_ref": true,
+     "evidence_grounded": true,
+     "counterexample_valid": true
+    }
+   ],
+   "unsupported_findings": [],
+   "n_findings": 1,
+   "n_blockers": 1,
+   "runtime_s": 0.02452,
+   "usage": {
+    "runtime_s": 0.0244,
+    "model_calls": 0,
+    "model_retries": 0
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "threshold_mismatch"
+   ],
+   "paired_with": "D01_threshold_changed"
+  },
+  {
+   "case": "I03_model_timeout",
+   "split": "heldout",
+   "expected": "INCOMPLETE",
+   "predicted": "PASS",
+   "error": null,
+   "defects": [],
+   "unsupported_findings": [],
+   "n_findings": 0,
+   "n_blockers": 0,
+   "runtime_s": 0.0179,
+   "usage": {
+    "runtime_s": 0.0178,
+    "model_calls": 0,
+    "model_retries": 0
+   },
+   "model_rejected_claims": [],
+   "finding_types": [],
+   "paired_with": null
+  },
+  {
+   "case": "I05_ambiguous_unit",
+   "split": "heldout",
+   "expected": "INCOMPLETE",
+   "predicted": "INCOMPLETE",
+   "error": null,
+   "defects": [],
+   "unsupported_findings": [],
+   "n_findings": 1,
+   "n_blockers": 0,
+   "runtime_s": 0.0134,
+   "usage": {
+    "runtime_s": 0.0132,
+    "model_calls": 0,
+    "model_retries": 0
+   },
+   "model_rejected_claims": [],
+   "finding_types": [
+    "ambiguous_unit"
+   ],
+   "paired_with": null
+  },
+  {
+   "case": "I06_model_truncated_json",
+   "split": "heldout",
+   "expected": "INCOMPLETE",
+   "predicted": "PASS",
+   "error": null,
+   "defects": [],
+   "unsupported_findings": [],
+   "n_findings": 0,
+   "n_blockers": 0,
+   "runtime_s": 0.01784,
+   "usage": {
+    "runtime_s": 0.0176,
+    "model_calls": 0,
+    "model_retries": 0
+   },
+   "model_rejected_claims": [],
+   "finding_types": [],
+   "paired_with": null
+  },
+  {
+   "case": "V04_renamed_reordered_paraphrased",
+   "split": "heldout",
+   "expected": "PASS",
+   "predicted": "PASS",
+   "error": null,
+   "defects": [],
+   "unsupported_findings": [],
+   "n_findings": 0,
+   "n_blockers": 0,
+   "runtime_s": 0.01776,
+   "usage": {
+    "runtime_s": 0.0176,
+    "model_calls": 0,
+    "model_retries": 0
+   },
+   "model_rejected_claims": [],
+   "finding_types": [],
+   "paired_with": "V01_baseline"
+  }
+ ]
+}
